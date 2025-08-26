@@ -1,0 +1,88 @@
+.update-product-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px 40px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 600;
+  color: #3f51b5;
+  margin-bottom: 20px;
+}
+
+.product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+mat-label {
+  font-weight: 500;
+  color: #555;
+}
+
+input[matInput], textarea[matInput] {
+  font-size: 15px;
+  padding: 6px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button[mat-raised-button] {
+  background: linear-gradient(45deg, #3f51b5, #6573c3);
+  color: white;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+button[mat-raised-button]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(63, 81, 181, 0.4);
+}
+
+button[mat-stroked-button] {
+  border-radius: 8px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+button[mat-stroked-button]:hover {
+  background: #f44336;
+  color: white;
+  border-color: #f44336;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .update-product-container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

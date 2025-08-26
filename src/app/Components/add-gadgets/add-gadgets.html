@@ -1,0 +1,43 @@
+<div class="add-gadget-container">
+  <h2>Add New Gadget</h2>
+
+
+
+  <form [formGroup]="gadgetForm" (ngSubmit)="onSubmit()" class="gadget-form">
+    <div class="form-group">
+      <label for="gadgetName">Gadget Name</label>
+      <input id="gadgetName" formControlName="gadgetName" type="text" placeholder="Enter gadget name" />
+    </div>
+
+    <div class="form-group">
+      <label for="brandName">Brand Name</label>
+      <input id="brandName" formControlName="brandName" type="text" placeholder="Enter brand name" />
+    </div>
+
+    <div class="form-group">
+      <label for="modelName">Model Name</label>
+      <input id="modelName" formControlName="modelName" type="text" placeholder="Enter model name" />
+    </div>
+
+    <div class="form-group">
+      <label for="specifications">Specifications</label>
+      <textarea id="specifications" formControlName="specifications" placeholder="Enter specifications"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="price">Price (₹)</label>
+      <input id="price" formControlName="price" type="number" placeholder="Enter price" />
+    </div>
+
+    <div class="form-group">
+      <label for="feedback">Feedback</label>
+      <input id="feedback" formControlName="feedback" type="text" placeholder="Enter feedback" />
+    </div>
+
+        <div class="form-actions">
+      <button type="submit" class="btn-submit">Add Gadget</button>
+      <button type="button" class="btn-back" (click)="goBack()">← Back</button>
+    </div>
+  </form>
+  
+</div>

@@ -1,0 +1,48 @@
+
+
+
+
+
+<div class="update-product-container mat-elevation-z4">
+  <h2 class="title">Update Gadget</h2>
+
+  <form (ngSubmit)="onSubmit()" #productForm="ngForm" class="product-form">
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Gadget Name</mat-label>
+      <input matInput placeholder="Enter Gadget Name" [(ngModel)]="product.gadgetName" name="gadgetName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Brand Name</mat-label>
+      <input matInput placeholder="Enter Brand Name" [(ngModel)]="product.brandName" name="brandName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Model Name</mat-label>
+      <input matInput placeholder="Enter Model Name" [(ngModel)]="product.modelName" name="modelName" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Specifications</mat-label>
+      <textarea matInput placeholder="Enter Specifications" [(ngModel)]="product.specifications" name="specifications"></textarea>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Price</mat-label>
+      <input matInput type="number" placeholder="Enter Price" [(ngModel)]="product.price" name="price">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Feedback</mat-label>
+      <textarea matInput placeholder="Enter Feedback" [(ngModel)]="product.feedback" name="feedback"></textarea>
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit" [disabled]="productForm.invalid">
+        Update Gadget
+      </button>
+      <button mat-stroked-button color="warn" type="button" (click)="goBack()">← Back</button>
+    </div>
+  </form>
+</div>

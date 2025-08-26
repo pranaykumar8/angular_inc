@@ -1,0 +1,136 @@
+<!-- 
+<nav class="navbar">
+  <div class="logo">⚡ ElectroShop</div>
+  <div class="cart" (click)="toggleCart()">
+    🛒 Cart ({{ cart.length }})
+  </div>
+</nav>
+
+
+<div class="landing-container">
+  <h1>Welcome to ElectroShop ⚡</h1>
+  <p>Find the best gadgets at unbeatable prices!</p>
+
+  <div class="gadgets-grid">
+    <div class="gadget-card" *ngFor="let gadget of gadgets">
+      <img [src]="gadget.image" alt="{{ gadget.name }}">
+      <h3>{{ gadget.name }}</h3>
+      <p>₹{{ gadget.price }}</p>
+      <button (click)="addToCart(gadget)">Add to Cart</button>
+    </div>
+  </div>
+</div>
+
+<div class="cart-sidebar" [class.active]="cartOpen">
+  <h2>Your Cart</h2>
+  <div *ngIf="cart.length === 0">No items in cart.</div>
+  <ul>
+    <li *ngFor="let item of cart">{{ item.name }} - ₹{{ item.price }}</li>
+  </ul>
+</div> -->
+<!-- 
+
+<div class="landing-dashboard">
+  <h2>Gadgets Dashboard</h2>
+
+ 
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search gadgets..."
+      [(ngModel)]="searchText"
+      (input)="filterGadgets()"
+    />
+  </div>
+
+  <table class="gadgets-table" *ngIf="filteredGadgets.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price (₹)</th>
+        <th>Specifications</th>
+        <th>Feedback</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let gadget of filteredGadgets">
+        <td>{{ gadget.name }}</td>
+        <td>{{ gadget.brand }}</td>
+        <td>{{ gadget.model }}</td>
+        <td>{{ gadget.price }}</td>
+        <td>{{ gadget.specifications }}</td>
+        <td>{{ gadget.feedback }}</td>
+        <td>
+          <div class="action-menu">
+            <button (click)="toggleSelectGadget(gadget.id!)">Actions ⚙️</button>
+            <div *ngIf="selectedGadgetId === gadget.id" class="menu">
+              <button (click)="addToCart(gadget)">Add to Cart</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noData>
+    <p>No gadgets available.</p>
+  </ng-template>
+
+  <div class="pagination" *ngIf="totalPages > 1">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+    <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next</button>
+  </div>
+</div> -->
+
+
+
+<div class="landing-page">
+  <nav class="navbar">
+    <div class="logo">⚡ ElectroShop</div>
+    <div class="cart" (click)="toggleCart()">🛒 Cart ({{ cart.length }})</div>
+  </nav>
+
+  <div class="landing-container">
+    <h1>Welcome to ElectroShop ⚡</h1>
+    <p>Find the best gadgets at unbeatable prices!</p>
+
+    <input
+      type="text"
+      placeholder="Search gadgets..."
+      [(ngModel)]="searchText"
+      (input)="filterGadgets()"
+      class="search-input"
+    />
+
+    <div class="gadgets-grid">
+      <div class="gadget-card" *ngFor="let gadget of paginatedGadgets">
+        <img [src]="gadget.image" alt="{{ gadget.name }}">
+        <h3>{{ gadget.name }}</h3>
+        <p>Brand: {{ gadget.brand }}</p>
+        <p>Model: {{ gadget.model }}</p>
+        <p>Price: ₹{{ gadget.price }}</p>
+        <button (click)="addToCart(gadget)">Add to Cart</button>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button (click)="goPrevPage()" [disabled]="currentPage === 0">Previous</button>
+      <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
+      <button (click)="goNextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
+    </div>
+  </div>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" [class.active]="cartOpen">
+    <h2>Your Cart</h2>
+    <div *ngIf="cart.length === 0">No items in cart.</div>
+    <ul>
+      <li *ngFor="let item of cart">{{ item.name }} - ₹{{ item.price }}</li>
+    </ul>
+  </div>
+</div>

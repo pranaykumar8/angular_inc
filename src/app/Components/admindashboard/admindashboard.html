@@ -1,0 +1,70 @@
+<div class="admin-dashboard">
+  <div class="header">
+    <h2>Admin Dashboard</h2>
+    <button class="add-btn" (click)="goToAddGadget()">+ Add Gadget</button>
+  </div>
+
+  <hr />
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search gadgets..."
+      [(ngModel)]="searchText"
+      (input)="filterGadgets()"
+    />
+  </div>
+
+  <h3>Gadgets List</h3>
+
+  <table class="gadgets-table" *ngIf="filteredGadgets && filteredGadgets.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>Gadget Name</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price (₹)</th>
+        <th>Specifications</th>
+        <th>Feedback</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of filteredGadgets">
+        <td>{{ g.gadgetName }}</td>
+        <td>{{ g.brandName }}</td>
+        <td>{{ g.modelName }}</td>
+        <td>{{ g.price }}</td>
+        <td>{{ g.specifications }}</td>
+        <td>{{ g.feedback }}</td>
+        <td>
+          <div class="action-menu">
+            <i class="fa-solid fa-gear" (click)="toggleMenu(g.id)"></i>
+            <div class="menu" *ngIf="selectedMenu === g.id">
+              <button class="action-btn update" (click)="editGadget(g.id)">Update</button>
+              <button class="action-btn delete" (click)="deleteGadget(g.id)">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- ⚡ Pagination Controls -->
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 0">
+      Previous
+    </button>
+
+    <span> Page {{ currentPage + 1 }} of {{ totalPages }} </span>
+
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">
+      Next
+    </button>
+  </div>
+
+
+  <ng-template #noData>
+    <p class="no-data">No gadgets available. Please add some.</p>
+  </ng-template>
+</div>

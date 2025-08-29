@@ -60,6 +60,12 @@ export class Admindashboard {
     this.router.navigate(['admin/add-gadgets']);
   }
 
+    goToLoginDetails() {
+    this.router.navigate(['admin/login-details']);
+  }
+
+
+
   // loadGadgets() {
   //   this.authService.getAll().subscribe({
   //     next: data => {
@@ -164,6 +170,13 @@ export class Admindashboard {
   editGadget(id: number) {
     this.router.navigate(['admin/update-gadget', id]);
   }
+logout() {
+    // Clear session/localStorage if needed
+    //localStorage.clear();
+    //sessionStorage.clear();
 
+    // Redirect to login page
+    this.router.navigate(['/login']);
+  }
   
 }

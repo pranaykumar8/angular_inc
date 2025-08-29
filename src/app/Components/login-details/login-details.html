@@ -1,0 +1,31 @@
+<div class="user-container">
+  <h2>Registered Users</h2>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <table *ngIf="users.length > 0; else noUsers">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #noUsers>
+    <p>No users found.</p>
+  </ng-template>
+
+
+  <!-- Back Button -->
+  <button (click)="goBack()" class="back-btn">⬅ Back to Admin</button>
+
+</div>

@@ -1,4 +1,4 @@
-<!-- 
+<!-- <!-- 
 <nav class="navbar">
   <div class="logo">⚡ ElectroShop</div>
   <div class="cart" (click)="toggleCart()">
@@ -88,7 +88,7 @@
 
 
 
-<div class="landing-page">
+<!-- <div class="landing-page">
   <nav class="navbar">
     <div class="logo">⚡ ElectroShop</div>
     <div class="cart" (click)="toggleCart()">🛒 Cart ({{ cart.length }})</div>
@@ -115,22 +115,213 @@
         <p>Price: ₹{{ gadget.price }}</p>
         <button (click)="addToCart(gadget)">Add to Cart</button>
       </div>
-    </div>
+    </div> -->
 
     <!-- Pagination -->
-    <div class="pagination">
+    <!-- <div class="pagination">
       <button (click)="goPrevPage()" [disabled]="currentPage === 0">Previous</button>
       <span>Page {{ currentPage + 1 }} of {{ totalPages }}</span>
       <button (click)="goNextPage()" [disabled]="currentPage >= totalPages - 1">Next</button>
     </div>
-  </div>
+  </div> -->
 
   <!-- Cart Sidebar -->
-  <div class="cart-sidebar" [class.active]="cartOpen">
+  <!-- <div class="cart-sidebar" [class.active]="cartOpen">
     <h2>Your Cart</h2>
     <div *ngIf="cart.length === 0">No items in cart.</div>
     <ul>
       <li *ngFor="let item of cart">{{ item.name }} - ₹{{ item.price }}</li>
     </ul>
+  </div>
+</div> --> 
+
+<!-- 
+
+<div class="user-dashboard">
+  <h2>Welcome User</h2>
+
+ 
+  <div class="top-container">
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Search gadgets..." 
+        [(ngModel)]="searchText" 
+        (input)="filterGadgets()" />
+    </div>
+  </div>
+
+  <h3>Available Gadgets</h3>
+
+  <table class="gadgets-table" *ngIf="filteredGadgets.length > 0; else noData">
+    <thead>
+      <tr>
+        <th>Gadget Name</th>
+        <th>Brand</th>
+        <th>Model</th>
+        <th>Price (₹)</th>
+        <th>Specifications</th>
+        <th>Feedback</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let g of filteredGadgets">
+        <td>{{ g.gadgetName }}</td>
+        <td>{{ g.brandName }}</td>
+        <td>{{ g.modelName }}</td>
+        <td>{{ g.price }}</td>
+        <td>{{ g.specifications }}</td>
+        <td>{{ g.feedback }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+    <span> Page {{ currentPage + 1 }} of {{ totalPages }} </span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next</button>
+  </div>
+
+  <ng-template #noData>
+    <p class="no-data">No gadgets available at the moment.</p>
+  </ng-template>
+</div>
+ -->
+
+<!--  
+ <div class="user-dashboard">
+  <div class="top-container">
+   
+    <div class="search-bar">
+      <input 
+        type="text" 
+        placeholder="Search gadgets..." 
+        [(ngModel)]="searchText" 
+        (input)="filterGadgets()" />
+    </div>
+
+    
+    <button class="cart-btn" (click)="toggleCart()">
+      🛒 Cart ({{ cart.length }})
+    </button>
+  </div>
+
+  <h3>Available Gadgets</h3>
+
+  
+  <div class="gadgets-grid">
+    <div class="gadget-card" *ngFor="let g of filteredGadgets">
+      <h4>{{ g.gadgetName }}</h4>
+      <p><b>Brand:</b> {{ g.brandName }}</p>
+      <p><b>Model:</b> {{ g.modelName }}</p>
+      <p><b>Price:</b> ₹{{ g.price }}</p>
+      <p class="specs">{{ g.specifications }}</p>
+      <button (click)="addToCart(g)">Add to Cart</button>
+    </div>
+  </div>
+
+  
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 0">Previous</button>
+    <span> Page {{ currentPage + 1 }} of {{ totalPages }} </span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next</button>
+  </div>
+
+  
+  <div class="overlay" *ngIf="cartOpen" (click)="toggleCart()"></div>
+
+  
+  <div class="cart-sidebar" [class.open]="cartOpen">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button class="close-btn" (click)="toggleCart()">×</button>
+    </div>
+
+    <div *ngIf="cart.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let item of cart">
+        <span>{{ item.gadgetName }} (x{{ item.quantity }})</span>
+        <span>₹{{ item.price * item.quantity }}</span>
+        <button (click)="removeFromCart(item)">❌</button>
+      </div>
+      <hr />
+      <h4>Total: ₹{{ totalPrice }}</h4>
+    </div>
+
+    <ng-template #emptyCart>
+      <p>No items in cart</p>
+    </ng-template>
+  </div>
+</div> -->
+
+
+
+<div class="user-dashboard">
+  <!-- 🔹 Dashboard Header / Navbar -->
+  <div class="dashboard-header">
+    <h2 class="logo">🛍️ Dashboard</h2>
+
+    <div class="top-actions">
+      <div class="search-bar">
+        <input 
+          type="text" 
+          placeholder="🔎 Search gadgets..." 
+          [(ngModel)]="searchText" 
+          (input)="filterGadgets()" />
+      </div>
+      <button class="cart-btn" (click)="toggleCart()">
+        🛒 Cart ({{ cart.length }})
+      </button>
+       <button class="logout-btn" (click)="logout()" title="Logout">
+      <i class="fas fa-sign-out-alt"></i>
+    </button>
+    </div>
+  </div>
+
+  <!-- 🔹 Section Title -->
+  <h3 class="section-title">Available Gadgets</h3>
+
+  <!-- 🔹 Grid View -->
+  <div class="gadgets-grid">
+    <div class="gadget-card" *ngFor="let g of filteredGadgets">
+      <h4>{{ g.gadgetName }}</h4>
+      <p class="brand">Brand: {{ g.brandName }}</p>
+      <p>Model: {{ g.modelName }}</p>
+      <p class="price">₹{{ g.price }}</p>
+      <p class="specs">{{ g.specifications }}</p>
+      <button (click)="addToCart(g)" class="add-cart-btn">Add to Cart</button>
+    </div>
+  </div>
+
+  <!-- 🔹 Pagination -->
+  <div class="pagination-controls" *ngIf="totalPages > 1">
+    <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 0">⬅ Previous</button>
+    <span> Page {{ currentPage + 1 }} of {{ totalPages }} </span>
+    <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">Next ➡</button>
+  </div>
+
+  <!-- 🔹 Overlay -->
+  <div class="overlay" *ngIf="cartOpen" (click)="toggleCart()"></div>
+
+  <!-- 🔹 Cart Sidebar -->
+  <div class="cart-sidebar" [class.open]="cartOpen">
+    <div class="cart-header">
+      <h3>🛒 Your Cart</h3>
+      <button class="close-btn" (click)="toggleCart()">×</button>
+    </div>
+
+    <div *ngIf="cart.length > 0; else emptyCart">
+      <div class="cart-item" *ngFor="let item of cart">
+        <span>{{ item.gadgetName }} (x{{ item.quantity }})</span>
+        <span>₹{{ item.price * item.quantity }}</span>
+        <button (click)="removeFromCart(item)">❌</button>
+      </div>
+      <hr />
+      <h4 class="total">Total: ₹{{ totalPrice }}</h4>
+      <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+
+    <ng-template #emptyCart>
+      <p>No items in cart</p>
+    </ng-template>
   </div>
 </div>

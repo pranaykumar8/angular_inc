@@ -6,14 +6,32 @@
 
   <hr />
 
-  <div class="search-bar">
+
+
+  <div class="top-container">
+    <!-- Left side: Search Bar -->
+    <div class="search-bar">
+      <input type="text" placeholder="Search gadgets..." [(ngModel)]="searchText" (input)="filterGadgets()" />
+    </div>
+
+    <!-- Right side: Login Details button -->
+    <button class="login-btn" (click)="goToLoginDetails()">Registered Details</button>
+  </div>
+
+
+  <!-- <div class="search-bar">
     <input
       type="text"
       placeholder="Search gadgets..."
       [(ngModel)]="searchText"
       (input)="filterGadgets()"
     />
+ Login Details button
+    <div class="login-details-btn">
+      <button class="btn" (click)="goToLoginDetails()">Login Details</button>
+    </div>
   </div>
+   -->
 
   <h3>Gadgets List</h3>
 
@@ -60,6 +78,9 @@
 
     <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage + 1 >= totalPages">
       Next
+    </button>
+     <button class="logout-btn" (click)="logout()" title="Logout">
+      <i class="fas fa-sign-out-alt"></i>
     </button>
   </div>
 

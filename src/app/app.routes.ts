@@ -37,6 +37,7 @@ import { authGuard } from './auth-guard';
 import { roleGuardGuard } from './role.guard-guard';
 import { Update } from './Components/update/update';
 import { AddGadgets } from './Components/add-gadgets/add-gadgets';
+import { LoginDetails } from './Components/login-details/login-details';
 
 export const routes: Routes = [
   // { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -101,7 +102,8 @@ export const routes: Routes = [
     children: [
       { path: '', component: Admindashboard },   // default admin dashboard
       { path: 'update-gadget/:id', component: Update },
-      { path: 'add-gadgets', component: AddGadgets }
+      { path: 'add-gadgets', component: AddGadgets },
+      { path: 'login-details', component: LoginDetails } 
     ]
   },
 
